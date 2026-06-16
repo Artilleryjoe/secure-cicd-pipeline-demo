@@ -11,7 +11,7 @@ updates:
       - "dependencies"
       - "ci"
 
-  # Python dependencies (when you add more)
+  # Python dependencies
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
