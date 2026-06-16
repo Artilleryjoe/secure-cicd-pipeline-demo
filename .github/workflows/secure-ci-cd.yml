@@ -36,7 +36,7 @@ jobs:
           pip install ruff pytest
 
       - name: Run Ruff linter
-        run: ruff check . --output-format=github || true
+        run: ruff check . --output-format=github
 
       - name: Run tests
         run: PYTHONPATH=. python -m pytest -v
