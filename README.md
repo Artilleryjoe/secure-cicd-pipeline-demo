@@ -58,7 +58,6 @@ With more time I would add:
 - Image signing with Cosign and SLSA provenance
 - Stronger Trivy failure policy (block on HIGH/CRITICAL)
 - Expand the application into a small web service with health checks
-- Add Dependabot configuration file
 - Implement branch protection rules requiring status checks
 
 ## Recommended Repository Settings
