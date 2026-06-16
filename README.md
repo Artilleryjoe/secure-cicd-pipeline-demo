@@ -46,5 +46,20 @@ python app.py
 docker build -t secure-cicd-demo .
 docker run --rm secure-cicd-demo
 ```
+## Reproducing the Pipeline
+Push to main or open a pull request. All three jobs will execute automatically. Check:
 
+- Actions tab for pipeline logs
+- Security tab for CodeQL and Trivy findings
+
+## Future Improvements
+With more time I would add:
+
+- Image signing with Cosign and SLSA provenance
+- Stronger Trivy failure policy (block on HIGH/CRITICAL)
+- Expand the application into a small web service with health checks
+- Add Dependabot configuration file
+- Implement branch protection rules requiring status checks
+
+## Additional Work
 Additional cybersecurity projects are available in my main portfolio: https://github.com/Artilleryjoe/Cybersecurity-Portfolio
