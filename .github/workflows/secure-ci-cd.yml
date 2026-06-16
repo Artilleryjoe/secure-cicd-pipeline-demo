@@ -40,4 +40,4 @@ jobs:
         run: ruff check . --output-format-github || true
 
       - name: Run tests
-        run: pytest -v
+        run: PYTHONPATH=. python -m pytest -v
