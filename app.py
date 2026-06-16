@@ -1,5 +1,0 @@
-def hello():
-  return "Hello from secure pipeline"
-
-if __name__ == "__main__":
-  print(hello())
