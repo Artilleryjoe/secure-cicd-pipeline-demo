@@ -6,20 +6,20 @@ on:
   pull_request:
     branches: [ main ]
 
-# Least privilege permissions (important for security)
 permissions:
   contents: read
   packages: write
   security-events: write
 
+# Temporarily allow Node 20 while we update actions later
+env:
+  ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
+
 jobs:
-  # ============================================
-  # JOB 1: Lint and Test
-  # ============================================
   lint-and-test:
     name: Lint & Test
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -37,7 +37,7 @@ jobs:
           pip install ruff pytest
 
       - name: Run Ruff linter
-        run: ruff check . --output-format-github || true
+        run: ruff check . --output-format=github || true
 
       - name: Run tests
         run: PYTHONPATH=. python -m pytest -v
