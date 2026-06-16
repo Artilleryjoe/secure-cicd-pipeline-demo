@@ -16,6 +16,9 @@ env:
   ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
 
 jobs:
+#========================
+# JOB 1: Lint and Test
+#========================
   lint-and-test:
     name: Lint & Test
     runs-on: ubuntu-latest
@@ -41,3 +44,38 @@ jobs:
 
       - name: Run tests
         run: PYTHONPATH=. python -m pytest -v
+#=========================================================
+# JOB 2: CodeQL Static Application Security Testing
+#=========================================================
+codeql-analysis:
+  name: CodeQL SAST Analysis
+  runs-on: ubuntu-latest
+
+  #CodeQL needs permission to write security events
+  permissions:
+    security-events: write
+    actions: read
+    contents: read
+
+  strategy:
+  matrix:
+    language: [ python ]
+
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: ${{ matrix.language }}
+        # Use security + quality queries (good balance)
+        queries: +security-and-quality
+        
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@v3
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
+      with:
+        category: "/language:${{ matrix.language }}"
