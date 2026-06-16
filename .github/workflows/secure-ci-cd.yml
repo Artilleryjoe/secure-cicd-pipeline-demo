@@ -134,3 +134,11 @@ jobs:
         uses: github/codeql-action/upload-sarif@v4
         with:
           sarif_file: 'trivy-results.sarif'
+
+      - name: Pipeline Summary
+        run: |
+          echo "## ✅ CI/CD Pipeline Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- Image pushed to GHCR" >> $GITHUB_STEP_SUMMARY
+          echo "- Scanned with Trivy (results in Security tab)" >> $GITHUB_STEP_SUMMARY
+          echo "- All jobs passed" >> $GITHUB_STEP_SUMMARY
