@@ -1,1 +1,2 @@
-# Add dependencies here later
+# Python dependencies for the project
+# Add packages here as needed (e.g. flask, pytest, ruff)
