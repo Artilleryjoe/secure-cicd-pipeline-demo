@@ -61,5 +61,17 @@ With more time I would add:
 - Add Dependabot configuration file
 - Implement branch protection rules requiring status checks
 
+## Recommended Repository Settings
+
+For a production-grade security posture, enable the following in **Settings → Security**:
+
+- Secret scanning + Push protection
+- Code scanning (already active via this pipeline)
+- Dependabot alerts and security updates (already active)
+- Private vulnerability reporting
+- Branch protection on `main` requiring:
+  - Status checks to pass (Lint & Test, CodeQL, Build/Scan/Deploy)
+  - Pull request reviews before merging
+
 ## Additional Work
 Additional cybersecurity projects are available in my main portfolio: https://github.com/Artilleryjoe/Cybersecurity-Portfolio
